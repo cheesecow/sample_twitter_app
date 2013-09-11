@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -16,14 +17,18 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 
 public class TimelineActivity extends Activity {
 
+	private static final int REQUEST_CODE = 0;
+
 	public void composeTweet(MenuItem mi) {
 		Intent i = new Intent(getApplicationContext(), ComposeTweet.class);
-		startActivityForResult(i, RESULT_OK);
+		startActivityForResult(i, REQUEST_CODE);
 	}
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		refreshTimeline();
+		  if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
+			  refreshTimeline();
+			  }
 	} 
 
 	

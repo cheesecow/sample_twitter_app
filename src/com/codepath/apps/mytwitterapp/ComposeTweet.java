@@ -37,8 +37,7 @@ public class ComposeTweet extends Activity {
 		RequestParams params = new RequestParams("status", message);
 		MyTwitterApp.getRestClient().postHomeTimeline(new JsonHttpResponseHandler() {
 			@Override
-			public void onSuccess(JSONArray jsonTweets) {
-				Log.d("success", jsonTweets.toString());
+			public void onSuccess(JSONObject jsonTweets) {
 				setResult(RESULT_OK);
 				finish();
 			}
