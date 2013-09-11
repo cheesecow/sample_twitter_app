@@ -1,6 +1,7 @@
 package com.codepath.apps.mytwitterapp;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -34,14 +35,19 @@ public class ComposeTweet extends Activity {
 	public void composeTweet(View v){
 		String message = etNewTweet.getText().toString();
 		RequestParams params = new RequestParams("status", message);
-		
 		MyTwitterApp.getRestClient().postHomeTimeline(new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(JSONArray jsonTweets) {
+				Log.d("success", jsonTweets.toString());
 				setResult(RESULT_OK);
-				finish(); 
+				finish();
+			}
+			public void onFailure(Throwable e, JSONObject error) {
+				Log.d("error", error.toString());
 			} 
+
 		}, params);
+
 	}
 	
 	public void setupViews(){

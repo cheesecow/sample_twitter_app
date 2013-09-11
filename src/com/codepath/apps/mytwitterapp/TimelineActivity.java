@@ -18,14 +18,12 @@ public class TimelineActivity extends Activity {
 
 	public void composeTweet(MenuItem mi) {
 		Intent i = new Intent(getApplicationContext(), ComposeTweet.class);
-		startActivity(i);
+		startActivityForResult(i, RESULT_OK);
 	}
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-	  if (resultCode == RESULT_OK ) {
-			refreshTimeline();
-	  }
+		refreshTimeline();
 	} 
 
 	
