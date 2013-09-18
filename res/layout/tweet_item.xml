@@ -21,18 +21,17 @@
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="15dp">
 
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="name" />
 
         <TextView
             android:id="@+id/tvBody"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="body" />
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="name" />
-        
 
     </LinearLayout>
 

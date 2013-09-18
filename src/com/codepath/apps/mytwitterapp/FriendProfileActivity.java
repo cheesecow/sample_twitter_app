@@ -2,6 +2,7 @@ package com.codepath.apps.mytwitterapp;
 
 import org.json.JSONObject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -19,10 +20,11 @@ public class FriendProfileActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_friend_profile);
-		loadProfileInfo();
+		Intent i = getIntent();
+		loadProfileInfo(i.getStringExtra("screen_name"));
 	}
 
-	private void loadProfileInfo() {
+	private void loadProfileInfo(String screen_name) {
 		MyTwitterApp.getRestClient().getFriendInfo(
 			new JsonHttpResponseHandler(){
 				public void onSuccess(JSONObject json){
@@ -31,10 +33,10 @@ public class FriendProfileActivity extends FragmentActivity {
 					populateProfileHeader(u);
 				}
 				public void onFailure(Throwable error, JSONObject json){
-					Log.d("blah", error.toString());
+					Log.d("error", error.toString());
 				}
 
-		}, "noradio" );		
+		}, screen_name );
 	}
 
 	private void populateProfileHeader(User u) {

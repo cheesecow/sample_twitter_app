@@ -79,8 +79,8 @@ public class TimelineActivity extends FragmentActivity implements TabListener {
 
 	public void onFriendProfileView(View v){
 		Tweet tweet = (Tweet) v.getTag();
-		Log.d("view", tweet.toString());
 		Intent i = new Intent(this, FriendProfileActivity.class);
+		i.putExtra("screen_name", tweet.getUser().getScreenName());
 		startActivity(i);		
 	}
 	
