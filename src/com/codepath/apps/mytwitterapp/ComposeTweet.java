@@ -46,7 +46,7 @@ public class ComposeTweet extends Activity {
 			} 
 
 		}, params);
-
+		
 	}
 	
 	public void setupViews(){
